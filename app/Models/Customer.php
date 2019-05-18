@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cliente extends Model
+class Customer extends Model
 {
     protected $fillable = [
         'name',
@@ -17,8 +17,7 @@ class Cliente extends Model
         return [
             'name' => 'required',
             'image' => 'image',
-            'cpf_cnpj' => 'required|unique:clientes'
+            'cpf_cnpj' => 'required|unique:customers'
         ];
     }
-
 }
