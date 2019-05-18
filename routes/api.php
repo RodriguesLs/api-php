@@ -1,8 +1,8 @@
 <?php
 
-Route::get('customer', 'Api\CustomerApiController@index');
+Route::get('/customer', 'CustomerApiController@index');
 
-Route::post('customer', 'Api\CustomerApiController@store');
+Route::post('/customer', 'CustomerApiController@store');
 
 //{
  //   return response()->json($request);
