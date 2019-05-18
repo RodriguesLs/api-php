@@ -22,7 +22,7 @@ class CustomerApiController extends Controller
 
     public function store(Request $request){
         
-        $this.validate($request, $this->cliente->rules());
+        $this->validate($request, $this->cliente->rules());
         $dataForm = $request->all();
         $data = $this->cliente->create($dataForm);
         return response()->json($data, 201);

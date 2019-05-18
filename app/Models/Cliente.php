@@ -9,7 +9,7 @@ class Cliente extends Model
     protected $fillable = [
         'name',
         'image',
-        'cpf_cnpj',
+        'cpf_cnpj'
     ];
 
     public function rules(){
