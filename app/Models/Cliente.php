@@ -6,5 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cliente extends Model
 {
-    //
+    protected $fillable = [
+        'name',
+        'image',
+        'cpf_cnpj',
+    ];
+
+    public function rules(){
+
+        return [
+            'name' => 'required',
+            'image' => 'image',
+            'cpf_cnpj' => 'required|unique:clientes'
+        ];
+    }
+
 }
