@@ -19,4 +19,20 @@ class CustomerApiController extends MasterApiController
         $this->request = $request;
     }
 
+    public function document($id){
+        if(!$data = $this->model->with('document')->find($id)){
+            return response()->json(['error' => 'data not found'], 404);
+        }else{
+            return response()->json($data);
+        }
+    }
+
+    public function phones($id){
+        if(!$data = $this->model->with('phone')->find($id)){
+            return response()->json(['error' => 'data not found'], 404);
+        }else{
+            return response()->json($data);
+        }
+    }
+
 }

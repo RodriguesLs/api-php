@@ -1,10 +1,11 @@
 <?php
 
+Route::get('customer/{id}/document', 'Api\CustomerApiController@document');
+Route::get('customer/{id}/phones', 'Api\CustomerApiController@phones');
+Route::apiResource('customers', 'Api\CustomerApiController');
 
-Route::get('/customers', 'Api\CustomerApiController@index');
-Route::post('/customer', 'Api\CustomerApiController@store');
-Route::get('/customer/{id}', 'Api\CustomerApiController@show');
-Route::delete('/customer/{id}', 'Api\CustomerApiController@destroy');
-Route::patch('/customer/{id}', 'Api\CustomerApiController@update');
+Route::get('document/{id}/customer', 'Api\DocumentApiController@customer');
+Route::apiResource('documents', 'Api\DocumentApiController');
 
-// Route::apiResource('customers', 'Api\CustomerApiController');
+Route::get('phones/{id}/customer', 'Api\PhoneApiController@customer');
+Route::apiResource('phone', 'Api\PhoneApiController');

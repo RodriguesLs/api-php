@@ -5,21 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Customer;
 
-class Phone extends Model
+class Document extends Model
 {
-    public $fillable = [
+    protected $fillable = [
         'customer_id',
-        'number'
+        'cpf_cnpj'
     ];
-    
+
     public function rules(){
         return [
             'customer_id' => 'required',
-            'number' => 'required'
+            'cpf_cnpj' => 'required|unique:documents'
         ];
     }
     public function customer(){
         return $this->belongsTo(Customer::class, 'customer_id', 'id');
     }
-
 }

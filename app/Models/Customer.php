@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Document;
+use App\Models\Phone;
 
 class Customer extends Model
 {
     protected $fillable = [
         'name',
         'image',
-        'cpf_cnpj'
     ];
 
     public function rules(){
@@ -17,7 +18,6 @@ class Customer extends Model
         return [
             'name' => 'required',
             'image' => 'image',
-            'cpf_cnpj' => 'required|unique:customers'
         ];
     }
     public function updateRules(){
@@ -25,7 +25,13 @@ class Customer extends Model
         return [
             'name',
             'image' => 'image',
-            'cpf_cnpj'
         ];
+    }
+
+    public function document(){
+        return $this->hasOne(Document::class, 'customer_id', 'id');
+    }
+    public function phone(){
+        return $this->hasMany(Phone::class, 'customer_id', 'id');
     }
 }
