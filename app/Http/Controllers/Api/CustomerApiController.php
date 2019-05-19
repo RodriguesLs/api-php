@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Facades\Storage;
 
 class CustomerApiController extends Controller
 {
@@ -24,6 +26,20 @@ class CustomerApiController extends Controller
         
         $this->validate($request, $this->customer->rules());
         $dataForm = $request->all();
+
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+            $extension = $request->image->extension();
+            $name = uniqid(date('His'));
+            $nameFile = "{$name}.{$extension}";
+            $upload = image::make($dataForm['image'])->resize(177, 236)->save(storage_path("app/public/customers/$nameFile", 70));
+
+            if(!$upload){
+                return response()->json(['error'=> 'Upload failed'], 500);
+            }else{
+                $dataForm['image'] = $nameFile;
+            }
+        }
+
         $data = $this->customer->create($dataForm);
         return response()->json($data, 201);
     }
