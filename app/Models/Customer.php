@@ -20,4 +20,12 @@ class Customer extends Model
             'cpf_cnpj' => 'required|unique:customers'
         ];
     }
+    public function updateRules(){
+
+        return [
+            'name',
+            'image' => 'image',
+            'cpf_cnpj'
+        ];
+    }
 }
