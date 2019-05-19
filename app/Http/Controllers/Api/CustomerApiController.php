@@ -16,14 +16,15 @@ class CustomerApiController extends Controller
         $this->request = $request;
     }
 
-    public function index() {
+    public function index() 
+    {
         $data = $this->customer->all();
         // dd($data); funcionalidade para debugar, neste caso estou debugando a variável $data
         return response()->json($data);
     }
 
-    public function store(Request $request){
-        
+    public function store(Request $request)
+    {
         $this->validate($request, $this->customer->rules());
         $dataForm = $request->all();
 
@@ -42,6 +43,15 @@ class CustomerApiController extends Controller
 
         $data = $this->customer->create($dataForm);
         return response()->json($data, 201);
+    }
+
+    public function show($id)
+    {
+        if(!$data = $this->customer->find($id)){
+            return response()->json(['error' => 'Nada foi localizado, tente outro id']);
+        }else{
+            return response()->json($data);
+        }
     }
 
 }
