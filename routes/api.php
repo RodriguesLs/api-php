@@ -9,3 +9,7 @@ Route::apiResource('documents', 'Api\DocumentApiController');
 
 Route::get('phones/{id}/customer', 'Api\PhoneApiController@customer');
 Route::apiResource('phone', 'Api\PhoneApiController');
+
+#Route::get('films', 'Api\FilmApiController@index');
+Route::apiResource('films', 'Api\FilmApiController');
+#Route::apiResource('location', 'Api\LocationApiController');

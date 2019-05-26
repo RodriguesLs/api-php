@@ -27,6 +27,11 @@ class Customer extends Model
             'image' => 'image',
         ];
     }
+    
+    public function file($id){
+        $data = $this->find($id);
+        return $data->image;
+    }
 
     public function document(){
         return $this->hasOne(Document::class, 'customer_id', 'id');
