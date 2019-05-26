@@ -17,5 +17,7 @@ class LocationApiController extends MasterApiController
         $this->request = $request;
     }
 
+    public function customer(){
 
+    }
 }
